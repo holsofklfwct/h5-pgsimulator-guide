@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>pg模拟器 · 稳定入口 | 信息卡片页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9fc;
+      color: #1e2f3e;
+      line-height: 1.6;
+      padding: 1rem 1.2rem 2.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    /* 主视觉 — 蓝绿渐变卡片 */
+    .hero-card {
+      background: linear-gradient(145deg, #d9f0f5 0%, #c5e8e8 100%);
+      border-radius: 2rem;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 8px 18px rgba(60, 130, 130, 0.12);
+      margin-bottom: 2rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .hero-card h1 {
+      font-size: 2.2rem;
+      font-weight: 550;
+      letter-spacing: -0.01em;
+      color: #125e5e;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-card .sub {
+      font-size: 1.1rem;
+      color: #1b5f5f;
+      opacity: 0.85;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-card p {
+      max-width: 600px;
+      color: #1d4b4b;
+    }
+
+    .hero-card .badge {
+      display: inline-block;
+      background: #1d7a7a;
+      color: white;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: 40px;
+      margin-top: 0.5rem;
+    }
+
+    /* 网格卡片 — 三列自动适应 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .grid-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.6rem 1.5rem;
+      box-shadow: 0 4px 10px rgba(30, 60, 70, 0.05);
+      border: 1px solid #daedf0;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .grid-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(30, 90, 90, 0.08);
+    }
+
+    .grid-card h3 {
+      font-size: 1.2rem;
+      font-weight: 550;
+      color: #136161;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .grid-card h3::before {
+      content: "◆";
+      color: #2f9e9e;
+      font-size: 0.9rem;
+      margin-right: 0.3rem;
+    }
+
+    .grid-card p {
+      font-size: 0.95rem;
+      color: #2e4a4f;
+    }
+
+    .grid-card .tag {
+      display: inline-block;
+      background: #e2f2f2;
+      color: #115757;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 30px;
+      margin-top: 0.7rem;
+    }
+
+    /* 链接段落（嵌入自然句子） */
+    .link-paragraph {
+      background: #ffffffd8;
+      backdrop-filter: blur(2px);
+      border-radius: 1.8rem;
+      padding: 1.5rem 2rem;
+      margin: 1.8rem 0 2.5rem;
+      border: 1px solid #cce3e6;
+      box-shadow: 0 4px 12px rgba(0, 40, 40, 0.03);
+    }
+
+    .link-paragraph p {
+      font-size: 1rem;
+      color: #1f3a40;
+      margin-bottom: 0.8rem;
+    }
+
+    .link-paragraph a {
+      color: #116868;
+      background: transparent;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 2px solid #88c9c9;
+      padding-bottom: 0.05rem;
+      transition: border-color 0.2s, background 0.1s;
+    }
+
+    .link-paragraph a:hover {
+      border-bottom-color: #176b6b;
+      background: #d4f0f0;
+    }
+
+    .faq-mini {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem 1.8rem;
+      margin-top: 1.8rem;
+      border: 1px solid #daeef0;
+    }
+
+    .faq-mini h4 {
+      font-size: 1.1rem;
+      color: #0a5f5f;
+      margin-bottom: 0.8rem;
+    }
+
+    .faq-mini details {
+      margin: 0.6rem 0;
+      font-size: 0.95rem;
+      border-left: 3px solid #92cdcd;
+      padding-left: 1rem;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      color: #1b4f4f;
+      cursor: pointer;
+    }
+
+    .faq-mini details p {
+      margin: 0.5rem 0 0.2rem;
+      color: #2a5353;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      body {
+        padding: 0.8rem 0.9rem 1.8rem;
+      }
+      .hero-card {
+        padding: 1.5rem 1.2rem;
+      }
+      .hero-card h1 {
+        font-size: 1.8rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .link-paragraph {
+        padding: 1.2rem 1.2rem;
+      }
+      .faq-mini {
+        padding: 1rem 1.2rem;
+      }
+    }
+
+    footer {
+      margin-top: 2.2rem;
+      font-size: 0.9rem;
+      color: #5a7979;
+      text-align: center;
+      border-top: 1px solid #cde1e1;
+      padding-top: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 主视觉 hero 卡片 -->
+  <div class="hero-card">
+    <h1>pg模拟器 · 稳定入口</h1>
+    <div class="sub">轻量 · 浏览器即用 · 日常伴手</div>
+    <p>一个无需下载、打开就能用的页面工具，帮你快速模拟 pg 相关逻辑与场景。适合偶尔测试、教学演示或临时验证想法。</p>
+    <span class="badge">✓ 页面说明 · 持续可用</span>
+  </div>
+
+  <!-- 用途卡片 + 适合人群 混合网格, 信息卡片式 -->
+  <div class="card-grid">
+
+    <div class="grid-card">
+      <h3>快速模拟</h3>
+      <p>在浏览器里直接运行 pg 模拟流程，省去本地配置环境的时间。适合临时想试一段逻辑的场景。</p>
+      <span class="tag">用途</span>
+    </div>
+
+    <div class="grid-card">
+      <h3>学习与演示</h3>
+      <p>教学时打开页面就能展示效果，不必依赖 IDE 或特定设备。学员也能随时跟上节奏。</p>
+      <span class="tag">场景</span>
+    </div>
+
+    <div class="grid-card">
+      <h3>轻量验证</h3>
+      <p>写文档或做设计时，顺手验证某个 sql 或伪代码片段，不用切换窗口或启动服务。</p>
+      <span class="tag">效率</span>
+    </div>
+
+    <div class="grid-card">
+      <h3>适合人群</h3>
+      <p>前端、后端、教学者、偶尔接触 pg 的运维或数据分析同学，只要需要快速模拟都可以试试。</p>
+      <span class="tag">人群</span>
+    </div>
+
+    <div class="grid-card">
+      <h3>移动友好</h3>
+      <p>手机或平板也能打开页面，基础操作不受限。等车、会议间隙也能简单测试。</p>
+      <span class="tag">设备</span>
+    </div>
+
+    <div class="grid-card">
+      <h3>无需注册</h3>
+      <p>直接打开即用，没有登录门槛。数据也在本地处理，用完即走。</p>
+      <span class="tag">隐私</span>
+    </div>
+  </div>
+
+  <!-- 自然链接段落 —— 稳定入口描述，a 标签文本严格等于 pg模拟器 -->
+  <div class="link-paragraph">
+    <p>如果你需要一个稳定、直接的入口来体验或测试相关功能，可以随时打开 <a href="https://h5-pgsimulator.com">pg模拟器</a>。它就在浏览器里，不用安装、不用配置，开一个标签页就能接着上次的思路继续。</p>
+    <p>页面保持着比较干净的界面，不会有杂乱的广告或跳转打扰。我自己偶尔写文档或给别人讲逻辑时，也会直接用这个页面模拟一下，省事。</p>
+  </div>
+
+  <!-- FAQ 摘要卡片 -->
+  <div class="faq-mini">
+    <h4>常见疑问 · 摘要</h4>
+    <details>
+      <summary>pg模拟器需要网络很好才能用吗？</summary>
+      <p>页面本身是轻量 h5，加载一次后大部分交互在本地进行。普通 4G 网络或家庭宽带都可以流畅使用。</p>
+    </details>
+    <details>
+      <summary>是否支持保存我的模拟记录？</summary>
+      <p>目前没有云端保存功能，数据在关闭页面后会清除。如果需要保留结果，可以手动复制或截图。</p>
+    </details>
+    <details>
+      <summary>和本地 PostgreSQL 有什么区别？</summary>
+      <p>这个模拟器更偏向快速验证和教学，并非完整的数据库服务。适合查语法、测试表达式或简单逻辑。</p>
+    </details>
+    <details>
+      <summary>手机浏览器兼容性如何？</summary>
+      <p>主流移动浏览器（Chrome、Safari、Edge）均可正常显示和操作。横屏时体验更佳。</p>
+    </details>
+  </div>
+
+  <footer>
+    — 信息卡片页 · 介绍 pg模拟器 · 稳定入口 —
+  </footer>
+
+</div>
+</body>
+</html>
