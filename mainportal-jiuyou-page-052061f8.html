@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九游娱乐 · 自在体验</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fbfbfa;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', sans-serif;
+            color: #1e1e1e;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            padding: 2rem 1rem 4rem;
+        }
+
+        .page {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        /* hero */
+        .hero {
+            padding: 2.5rem 0 2rem;
+            border-bottom: 1px solid #eae9e6;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #121212;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: #4a4a4a;
+            max-width: 580px;
+        }
+
+        /* 通用 */
+        section {
+            padding: 2.8rem 0;
+            border-bottom: 1px solid #eae9e6;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 480;
+            letter-spacing: -0.01em;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 480;
+            margin-bottom: 0.4rem;
+            color: #222;
+        }
+
+        p, li {
+            font-size: 1rem;
+            color: #353535;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding: 0.4rem 0 0.4rem 1.2rem;
+            position: relative;
+        }
+
+        li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            color: #9a9a9a;
+            font-weight: 300;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem 2.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 1.4rem 1.2rem 1.2rem;
+            border-radius: 0;
+            border: 1px solid #ecebe8;
+            transition: background 0.2s;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #4b4b4b;
+        }
+
+        .inline-link {
+            color: #1e3a5f;
+            text-decoration: none;
+            border-bottom: 1px solid #cbd5e1;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .inline-link:hover {
+            color: #0b1f33;
+            border-bottom-color: #1e3a5f;
+        }
+
+        .faq-item {
+            margin-bottom: 1.6rem;
+        }
+
+        .faq-item strong {
+            display: inline-block;
+            font-weight: 500;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+            color: #111;
+        }
+
+        .faq-item p {
+            margin-left: 0;
+            color: #3b3b3b;
+        }
+
+        .bottom-links {
+            padding: 2rem 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.8rem;
+            font-size: 0.95rem;
+        }
+
+        .bottom-links a {
+            color: #3a3a3a;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .bottom-links a:hover {
+            border-bottom-color: #888;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #8b8b8b;
+            border-top: 1px solid #e6e5e2;
+            padding-top: 1.8rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 0.8rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            section {
+                padding: 2rem 0;
+            }
+
+            .card {
+                padding: 1rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- hero -->
+        <div class="hero">
+            <h1>在节奏之外，<br>留一点自在时刻</h1>
+            <p>无论日常多繁忙，偶尔也需要一处能放松精神、随心探索的角落。<a href="https://mainportal-jiuyou.com" class="inline-link">九游娱乐</a>正是为这样的片刻而存在——简单、轻盈、没有负担。</p>
+        </div>
+
+        <!-- 优势区 -->
+        <section>
+            <h2>为什么值得驻足</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>不拘一格的内容</h3>
+                    <p>从轻松小游戏到沉浸式互动体验，种类丰富却不杂乱。你总能找到恰好符合当下心情的那一个。</p>
+                </div>
+                <div class="card">
+                    <h3>没有冗余的打扰</h3>
+                    <p>界面干净，操作直觉，不铺排弹窗或催促注册。打开的每一秒都留给真正的体验。</p>
+                </div>
+                <div class="card">
+                    <h3>跨设备的一致感</h3>
+                    <p>无论在手机、平板还是电脑上，流畅度与视觉风格都经过细心打磨，切换设备也不会觉得突兀。</p>
+                </div>
+                <div class="card">
+                    <h3>持续迭代的诚意</h3>
+                    <p>团队定期更新内容与机制，不固守模板，让老用户也能感受到细微的新意。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 说明区 -->
+        <section>
+            <h2>它适合怎样的时刻</h2>
+            <p><a href="https://mainportal-jiuyou.com" class="inline-link">九游娱乐</a>并不试图占据你全部注意力，而是融入日常的缝隙：</p>
+            <ul>
+                <li>午休时想短暂切换一下心情，不需要复杂的规则，点开就能沉浸。</li>
+                <li>晚上只想放空大脑，在柔和节奏中缓慢探索，不被竞技或排名裹挟。</li>
+                <li>和朋友聚会时一起发现某个有趣的互动，没有门槛，笑一笑就好。</li>
+                <li>通勤路上、等待间隙——那些零散的时间，恰好适合一次轻量的互动。</li>
+            </ul>
+            <p style="margin-top: 1.4rem;">没有固定的玩法指南，也没有「必须完成」的任务。一切跟随你的节奏来。</p>
+        </section>
+
+        <!-- FAQ 摘要 -->
+        <section>
+            <h2>一些你可能想知道的</h2>
+
+            <div class="faq-item">
+                <strong>需要注册或登录吗？</strong>
+                <p>绝大多数内容都可以直接体验，无需创建账户。只有部分需要保存进度或个性化设置的功能才建议登录。</p>
+            </div>
+            <div class="faq-item">
+                <strong>内容适合什么年龄段？</strong>
+                <p>整体方向偏向全年龄友好，没有过于刺激或复杂的内容。当然，未成年人使用时可自行留意时间分配。</p>
+            </div>
+            <div class="faq-item">
+                <strong>会频繁收到通知或推广吗？</strong>
+                <p>不会。平台几乎没有主动推送，也不存在强制广告。偶尔的更新说明会以低调的方式出现在页面角落。</p>
+            </div>
+            <div class="faq-item">
+                <strong>在移动端体验如何？</strong>
+                <p>移动端做了专门的适配，按钮大小、触控区域都经过考量。即便在较小屏幕上，操作依然舒适。</p>
+            </div>
+        </section>
+
+        <!-- 底部链接 -->
+        <div class="bottom-links">
+            <a href="https://mainportal-jiuyou.com">九游娱乐</a>
+            <a href="#">关于平台</a>
+            <a href="#">常见问题</a>
+            <a href="#">用户协议</a>
+            <a href="#">联系支持</a>
+        </div>
+
+        <div class="footer-note">
+            九游娱乐 · 让每一次打开都轻松自在
+        </div>
+
+    </div>
+</body>
+</html>
